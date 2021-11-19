@@ -2,7 +2,7 @@
 //  PokemonViewController.swift
 //  PokemonCardsList
 //
-//  Created by Arkadijs Makarenko on 19/11/2021.
+//  Created by arturs.ziemelis on 19/11/2021.
 //
 
 import UIKit
@@ -74,9 +74,14 @@ extension PokemonViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-  //  #warning("Home task - Navigata to DetailViewController and present the same data you have inside the cell into new ViewController, similar we had in TrackList")
+   // #warning("Home task - Navigata to DetailViewController and present the same data you have inside the cell into new ViewController, similar we had in TrackList")
     // MARK: - Navigation
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = tableViewOutlet.indexPathForSelectedRow {
+            
+        let detailVC = segue.destination as! PokemonDetailViewController
+        detailVC.pokemon = pokey[indexPath.row]
+            
+        }
+    }
 }
-
-
